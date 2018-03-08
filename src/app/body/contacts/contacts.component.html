@@ -1,0 +1,68 @@
+<div class="container spacer">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			Liste des contacts
+		</div>
+		<div class="panel-body">
+			<form #searchForm="ngForm" (ngSubmit)="onSearchContacts(searchForm.value)" class="input-group">
+		      	<input type="text" class="form-control" placeholder="Search for...">
+		      	<span class="input-group-btn">
+		        	<button class="btn btn-default" type="submit">Go!</button>
+		      	</span>
+		    </form>
+			<table class="table table-striped">
+				<tr>
+					<th>ID</th><th>Nom</th><th>Prénom</th><th>Email</th><th>Tel.</th>
+				</tr>
+				<tr *ngFor="let c of contactsData?.content">
+					<td>{{c.id}}</td>
+					<td>{{c.nom}}</td>
+					<td>{{c.prenom}}</td>
+					<td>{{c.email}}</td>
+					<td>{{c.tel}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div class="container spacer">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			Ajouter un nouveau contact
+		</div>
+		<div class="panel-body">
+			<form #contactForm="ngForm" (ngSubmit)="onAddContact(contactForm.value)" class="form-horizontal">
+			  	<div class="form-group">
+				    <label for="inputEmail3" class="col-sm-2 control-label">Nom</label>
+			    	<div class="col-sm-10">
+			      		<input type="text" class="form-control" name="lastName" placeholder="Nom" required="" ngModel [(ngModel)]="inputContactForm.lastName">
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+				    <label for="inputEmail3" class="col-sm-2 control-label">Prénom</label>
+			    	<div class="col-sm-10">
+			      		<input type="text" class="form-control" name="firstName" placeholder="Prénom" required="" ngModel [(ngModel)]="inputContactForm.firstName">
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+				    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+			    	<div class="col-sm-10">
+			      		<input type="email" class="form-control" name="email" placeholder="Email" required="" ngModel [(ngModel)]="inputContactForm.email">
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+			    	<label for="inputPassword3" class="col-sm-2 control-label">Tel</label>
+			    	<div class="col-sm-10">
+			      		<input type="text" class="form-control" name="tel" placeholder="Tel" required="" ngModel [(ngModel)]="inputContactForm.tel">
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+			    	<div class="col-sm-offset-2 col-sm-10">
+			      		<button type="submit" [disabled]="!contactForm.valid" class="btn btn-primary">Ajouter le contact</button>
+			    	</div>
+			  	</div>
+			</form>
+		</div>
+	</div>
+</div>
